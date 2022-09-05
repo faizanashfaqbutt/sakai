@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import { Route, useLocation } from 'react-router-dom';
+import { Route,  useLocation } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 
 import { AppTopbar } from './AppTopbar';
@@ -44,6 +44,7 @@ import './assets/demo/flags/flags.css';
 import './assets/demo/Demos.scss';
 import './assets/layout/layout.scss';
 import './App.scss';
+import { Routes } from 'react-router-dom';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -296,29 +297,42 @@ const App = () => {
 
             <div className="layout-main-container">
                 <div className="layout-main">
-                    <Route path="/" exact render={() => <Dashboard colorMode={layoutColorMode} location={location} />} />
-                    <Route path="/formlayout" component={FormLayoutDemo} />
-                    <Route path="/input" component={InputDemo} />
-                    <Route path="/floatlabel" component={FloatLabelDemo} />
-                    <Route path="/invalidstate" component={InvalidStateDemo} />
-                    <Route path="/button" component={ButtonDemo} />
-                    <Route path="/table" component={TableDemo} />
-                    <Route path="/list" component={ListDemo} />
-                    <Route path="/tree" component={TreeDemo} />
-                    <Route path="/panel" component={PanelDemo} />
-                    <Route path="/overlay" component={OverlayDemo} />
-                    <Route path="/media" component={MediaDemo} />
-                    <Route path="/menu" component={MenuDemo} />
-                    <Route path="/messages" component={MessagesDemo} />
-                    <Route path="/blocks" component={BlocksDemo} />
-                    <Route path="/icons" component={IconsDemo} />
-                    <Route path="/file" component={FileDemo} />
-                    <Route path="/chart" render={() => <ChartDemo colorMode={layoutColorMode} location={location} />} />
-                    <Route path="/misc" component={MiscDemo} />
-                    <Route path="/timeline" component={TimelineDemo} />
-                    <Route path="/crud" component={Crud} />
-                    <Route path="/empty" component={EmptyPage} />
-                    <Route path="/documentation" component={Documentation} />
+                  
+                <Routes>
+
+                        <Route path="/" exact={true} element={
+                            <Dashboard colorMode={layoutColorMode} location={location} />
+                        } >
+                        </Route>
+                        <Route path="/formlayout/*" element={<FormLayoutDemo  location={location} />} />
+                        <Route exact={true} path="/input" element={<InputDemo />} />
+                        <Route exact={true} path="/floatlabel" element={<FloatLabelDemo />} />
+                        <Route exact={true} path="/invalidstate" element={<InvalidStateDemo />} />
+                        <Route exact={true} path="/button" element={<ButtonDemo />} />
+                        <Route exact={true} path="/table" element={<TableDemo />} />
+                        <Route exact={true} path="/list" element={<ListDemo />} />
+                        <Route exact={true} path="/tree" element={<TreeDemo />} />
+                        <Route exact={true} path="/panel" element={<PanelDemo />} />
+                        <Route exact={true} path="/overlay" element={<OverlayDemo />} />
+                        <Route exact={true} path="/media" element={<MediaDemo />} />
+                        <Route exact={true} path="/menu" element={<MenuDemo />} />
+                        <Route exact={true} path="/messages" element={<MessagesDemo />} />
+                        <Route exact={true} path="/blocks" element={<BlocksDemo />} />
+                        <Route exact={true} path="/icons" element={<IconsDemo />} />
+                        <Route exact={true} path="/file" element={<FileDemo />} />
+                        <Route exact={true} path="/chart" element={
+                            <ChartDemo colorMode={layoutColorMode} location={location} />
+
+                        } >
+                        </Route> 
+                        <Route exact={true} path="/misc" element={<MiscDemo />} />
+                        <Route exact={true} path="/timeline" element={<TimelineDemo />} />
+                        <Route exact={true} path="/crud" element={<Crud />} />
+                        <Route exact={true} path="/empty" element={<EmptyPage />} />
+                        <Route exact={true} path="/documentation" element={<Documentation />} />
+                                 
+                </Routes>
+
                 </div>
 
                 <AppFooter layoutColorMode={layoutColorMode} />

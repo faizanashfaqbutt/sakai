@@ -3,6 +3,7 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Dropdown } from 'primereact/dropdown';
+import { Link, Route, Routes } from 'react-router-dom';
 
 const FormLayoutDemo = () => {
     const [dropdownItem, setDropdownItem] = useState(null);
@@ -11,12 +12,16 @@ const FormLayoutDemo = () => {
         { name: 'Option 2', code: 'Option 2' },
         { name: 'Option 3', code: 'Option 3' }
     ];
-
+   
     return (
         <div className="grid">
             <div className="col-12 md:col-6">
                 <div className="card p-fluid">
                     <h5>Vertical</h5>
+                    <Link to={'hola'} >Hola</Link>
+                    <Routes>
+                        <Route path='/hola' element={<h1>asds</h1>} />
+                    </Routes>
                     <div className="field">
                         <label htmlFor="name1">Name</label>
                         <InputText id="name1" type="text" />
@@ -124,6 +129,7 @@ const FormLayoutDemo = () => {
 }
 
 const comparisonFn = function (prevProps, nextProps) {
+    console.log(prevProps, nextProps)
     return prevProps.location.pathname === nextProps.location.pathname;
 };
 
